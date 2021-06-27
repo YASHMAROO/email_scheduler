@@ -19,14 +19,12 @@ const Navbar = () => {
 
                             </li>
                             <li className="nav-item">
-                                <NavLink to="/about" className="nav-link active  " aria-current="page">About</NavLink>
-                            </li>
-                            <li className="nav-item">
                                 <NavLink to="/team" className="nav-link active  " aria-current="page">Team</NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink to="/history" className="nav-link active  " aria-current="page">History</NavLink>
                             </li>
+                            
                             <li className="nav-item">
                                 <NavLink to="/futuremails" className="nav-link active  " aria-current="page">Future Mails</NavLink>
                             </li>

@@ -1,4 +1,4 @@
-import react, { useState, useEffect } from 'react'
+
 
 const SingleMail = ({ body, sub, to, key, date }) => {
     return (

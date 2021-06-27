@@ -1,6 +1,4 @@
-import react, { useState, useEffect } from 'react'
 import SingleMail from './SingleMail'
-import axios from "axios"
 
 const History = ({ arr }) => {
     return (

@@ -10,7 +10,7 @@ const Team = () => {
                         <div className="row justify-content-center">
                             <div className="col-lg-8">
                                 <div className="section_title text-center">
-                                    <h2 className="fw-bold mb-5 text-dark">Our Team</h2>
+                                    <h1 className="fw-bold mb-5 text-dark">Our Team</h1>
                                 </div>
                             </div>
                         </div>
@@ -21,7 +21,7 @@ const Team = () => {
                                 <img className="card-img-top " src="/images/yash.jpg" alt="Cardcap" />
                                 <div className="card-body">
                                     <h5 className="card-title">Yash Maroo</h5>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <p className="card-text">ECE, NIT Durgapur</p>
                                     <a href="https://github.com/YASHMAROO" className="btn btn-warning fs-5 me-4"><FaGithubAlt /></a>
                                     <a href="https://www.linkedin.com/in/yash-m-840830133/" className="btn btn-warning "><FaLinkedin /></a>
                                 </div>
@@ -32,7 +32,7 @@ const Team = () => {
                                 <img className="card-img-top " src="/images/pancho.jpg" alt="Card cap" />
                                 <div className="card-body">
                                     <h5 className="card-title">Vedang Pancholi</h5>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <p className="card-text">CSE, NIT Durgapur</p>
                                     <a href="https://github.com/vp4321" className="btn btn-warning fs-5 me-4"><FaGithubAlt /></a>
                                     <a href="https://www.linkedin.com/in/vedang-pancholi-51a2291a8/" className="btn btn-warning "><FaLinkedin /></a>
                                 </div>
@@ -43,7 +43,7 @@ const Team = () => {
                                 <img className="card-img-top " src="/images/arin17.jpg" alt="Cardcap" />
                                 <div className="card-body">
                                     <h5 className="card-title">Bishwajit Ghosh</h5>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <p className="card-text">ECE, NIT Durgapur</p>
                                     <a href="https://github.com/arin17bishwa" className="btn btn-warning fs-5 me-4"><FaGithubAlt /></a>
                                     <a href="https://www.linkedin.com/in/bishwajit-ghosh-6a896b1a3/" className="btn btn-warning "><FaLinkedin /></a>
                                 </div>
@@ -54,7 +54,7 @@ const Team = () => {
                                 <img className="card-img-top " src="/images/subham.jpg" alt="Cardcap" />
                                 <div className="card-body">
                                     <h5 className="card-title">Subham Gupta</h5>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <p className="card-text">EEE, NIT Durgapur</p>
                                     <a href="https://github.com/SubhamGupta007" className="btn btn-warning fs-5 me-4"><FaGithubAlt /></a>
                                     <a href="https://www.linkedin.com/in/subham-gupta-2398361a9/" className="btn btn-warning "><FaLinkedin /></a>
                                 </div>

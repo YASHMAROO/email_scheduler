@@ -1,6 +1,4 @@
-import react, { useState, useEffect } from 'react'
 import Futuremails from './Futuremails'
-import axios from "axios"
 
 const Future = ({ arr }) => {
     return (

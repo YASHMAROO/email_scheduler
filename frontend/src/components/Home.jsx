@@ -1,16 +1,14 @@
-import { React, createContext } from 'react'
-import { useState } from 'react'
-import { GoogleLogin, GoogleLogout } from "react-google-login"
-import Navbar from "./Navbar"
-import { NavLink } from 'react-router-dom'
-import App from "../App"
+import { React } from 'react'
+import { Link } from 'react-router-dom'
 
 
-const Home = () => {
+
+const Home = ({user}) => {
+
 
 
     return (
-
+        <>
         <section className="Home">
             <div className="container-fluid">
                 <div className="row bg-transparent  vh-100 align-content-center align-items-center">
@@ -20,17 +18,21 @@ const Home = () => {
                                 <h4 className="  text-dark justify-content-lg-start  fst-italic">-Welcome to</h4>
                                 <h2 className=" fst-italic">Email Scheduling Application</h2>
                                 <h5 className="text-muted">An online application where you can schedule your E-mails </h5>
-
-
                             </div>
+                            {
+                                user ? <Link to="/mail" className="btn btn-warning m-5 p-3" style={{width:"110px"}}>Send Mail</Link>:null
+
+                            }
                         </div>
                     </div>
                     <div className="col-md-6 order-first-md">
-                        <img className="" style={{ width: "100%" }} src="/images/bg.jpg" alt="image"></img>
+                        <img  style={{ width: "100%" }} src="/images/bg.jpg" alt="img"></img>
                     </div>
                 </div>
             </div>
         </section>
+        
+        </>
     )
 }
 
