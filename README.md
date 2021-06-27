@@ -6,9 +6,9 @@
 
 In the project directory, you can run:
 
-### `yarn install`
+### Run `yarn install`
 To install all the available dependicies
-### `yarn start`
+### Run `yarn start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -20,8 +20,8 @@ You will also see any lint errors in the console.
 
 ## Move to the server folder
 
-### `npm install`
+### Run `npm install`
 To install all the dependencies
 
-### `node server'
+### Run `node server`
 To run the server at port 5000
