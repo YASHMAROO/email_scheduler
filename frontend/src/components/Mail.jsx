@@ -17,8 +17,11 @@ const Mail = ({ user }) => {
             description: desc,
             scheduleSelected: scheduleSelected
         }
-        const url = "http://localhost:5000/create_mail/" + user
-        axios.post(url, mail).then((res) => console.log(res.data));
+        const url = "https://powerful-oasis-11367.herokuapp.com/create_mail/" + user
+        axios.post(url, mail).then((res) => {
+            // console.log(res.data)
+            alert(res.data.message)
+        });
     }
     return (
         <>

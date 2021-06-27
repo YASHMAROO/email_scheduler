@@ -33,7 +33,7 @@ const App = () => {
 
   const getdata = () => {
     if(!user) {
-      const url = "http://localhost:5000/mails/"+user;
+      const url = "https://powerful-oasis-11367.herokuapp.com/mails/"+user;
       axios.get(url).then((res) => {
         // console.log(res.data)
         updateMails(res.data.mails)
@@ -42,7 +42,7 @@ const App = () => {
   }
   const getdata2 = () => {
     if(!user) {
-      const url2 = "http://localhost:5000/sent_mails/"+user;
+      const url2 = "https://powerful-oasis-11367.herokuapp.com/sent_mails/"+user;
       axios.get(url2).then((res) => {
         // console.log(res)
         sentMails(res.data.mails)
