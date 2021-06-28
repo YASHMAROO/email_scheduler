@@ -47,6 +47,11 @@ const App = () => {
                 <NavLink to="/" className="nav-link active  " aria-current="page">Home </NavLink>
 
               </li>
+              {
+                (user !== 0) ?
+                  <NavLink to="/mail" className="nav-link active  " aria-current="page">Send Mails</NavLink> : <h1></h1>
+
+              }
               <li className="nav-item">
                 <NavLink to="/team" className="nav-link active  " aria-current="page">Team</NavLink>
               </li>
@@ -62,32 +67,32 @@ const App = () => {
 
             </ul>
 
-            {
-              (user == 0) ?
-                <div className="">
-                  <GoogleLogin
-                    clientId="1099252555614-t7njjdio9amae9b7d52oc8qju53nlb2h.apps.googleusercontent.com"
-                    buttonText="Login"
-                    onSuccess={responseGoogle}
-                    onFailure={responseGoogle}
-                    isSignedIn={true}
-                    cookiePolicy={'single_host_origin'} />
-                </div>
-                :
-                <>
-                  <NavLink to="/mail" className="nav-link active text-dark text-bold " aria-current="page">Send Mail</NavLink>
-                  <button onClick={load} className="p-0"> <GoogleLogout
-                    clientId="1099252555614-t7njjdio9amae9b7d52oc8qju53nlb2h.apps.googleusercontent.com"
-                    buttonText="Logout"
-                  /></button>
 
-
-                </>
-            }
           </div>
         </div>
       </nav>
 
+      {
+        (user == 0) ?
+          <div className="m-3">
+            <GoogleLogin
+              clientId="1099252555614-t7njjdio9amae9b7d52oc8qju53nlb2h.apps.googleusercontent.com"
+              buttonText="Login"
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
+              isSignedIn={true}
+              cookiePolicy={'single_host_origin'} />
+          </div>
+          :
+          <>
+            <button onClick={load} className="m-3 p-0"> <GoogleLogout
+              clientId="1099252555614-t7njjdio9amae9b7d52oc8qju53nlb2h.apps.googleusercontent.com"
+              buttonText="Logout"
+            /></button>
+
+
+          </>
+      }
 
       <Switch>
 
