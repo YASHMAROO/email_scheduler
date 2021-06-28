@@ -20,7 +20,7 @@ const Home = ({user}) => {
                                 <h5 className="text-muted">An online application where you can schedule your E-mails </h5>
                             </div>
                             {
-                                user ? <Link to="/mail" className="btn btn-warning m-5 p-3" style={{width:"110px"}}>Send Mail</Link>:null
+                                (user!=0) ? <Link to="/mail" className="btn btn-warning m-5 p-3" style={{width:"110px"}}>Send Mail</Link>:null
 
                             }
                         </div>

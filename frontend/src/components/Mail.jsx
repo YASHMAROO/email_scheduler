@@ -3,7 +3,9 @@ import axios from "axios"
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-const Mail = ({ user }) => {
+const Mail = () => {
+    const SiteURL = "https://powerful-oasis-11367.herokuapp.com/";
+    const LH = "http://localhost:5000/";
     const [to, setto] = useState("");
     const [subject, setsubject] = useState("");
     const [desc, setdesc] = useState("");
@@ -17,9 +19,9 @@ const Mail = ({ user }) => {
             description: desc,
             scheduleSelected: scheduleSelected
         }
-        const url = "https://powerful-oasis-11367.herokuapp.com/create_mail/" + user
+        const user = localStorage.getItem('user');
+        const url = LH+"create_mail/" + user;
         axios.post(url, mail).then((res) => {
-            // console.log(res.data)
             alert(res.data.message)
         });
     }
@@ -39,7 +41,6 @@ const Mail = ({ user }) => {
                     </div>
                     <div className="mb-3">
                         <label for="exampleInputEmail1" className="form-label">Recurring</label>
-                        <input type="text" name="recur" value={scheduleSelected} onChange={(e) => setscheduleSelected(e.target.value)} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         <select class="form-select" aria-label="Default select example" value={scheduleSelected} 
         onChange={(e) => setscheduleSelected(e.target.value)}>
                             <option selected>Choose period</option>

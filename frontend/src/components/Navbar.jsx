@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { GrMail } from "react-icons/gr"
 
-const Navbar = () => {
+const Navbar = ({user}) => {
 
     return (
         <>
@@ -21,13 +21,16 @@ const Navbar = () => {
                             <li className="nav-item">
                                 <NavLink to="/team" className="nav-link active  " aria-current="page">Team</NavLink>
                             </li>
-                            <li className="nav-item">
+                            {
+                                user?
+                                <>
+                                <li className="nav-item">
                                 <NavLink to="/history" className="nav-link active  " aria-current="page">History</NavLink>
-                            </li>
-                            
-                            <li className="nav-item">
+                                </li>
+                                <li className="nav-item">
                                 <NavLink to="/futuremails" className="nav-link active  " aria-current="page">Future Mails</NavLink>
-                            </li>
+                                </li></>:null
+                            }
                         </ul>
                     </div>
                 </div>
