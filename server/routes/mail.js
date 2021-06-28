@@ -8,20 +8,15 @@ const {google} = require('googleapis');
 const validator = require('validator');
 const Verifier = require("email-verifier");
 
-
 //get all future mails
 router.get('/mails/:id', (req, res) => {
-    if(req.isAuthenticated()) {
-        Mail.find({userId: req.params.id}).then(mails => {
-            if(mails) {
-                res.status(200).send({mails: mails});
-            } else {
-                res.status(200).send({message: 'No data found'});
-            }
-        });
-    } else {
-        res.status(400).send({message: 'Please login to access this page'});
-    }
+    Mail.find({userId: req.params.id}).then(mails => {
+        if(mails) {
+            res.status(200).send({mails: mails});
+        } else {
+            res.status(200).send({message: 'No data found'});
+        }
+    });
 });
 
 //get all history mails
@@ -93,32 +88,32 @@ router.post('/create_mail/:id' , (req,res) => {
             if (err) {
                 res.send({message: err})
             } else {
-                if(data.catchAllCheck===null || data.disposableCheck===null || data.smtpcheck===false) {
-                    res.status(200).send({message: "Check the validity of the mail which you have enetered"})
-                } else {
+                if(data.catchAllCheck && data.disposableCheck && data.smtpCheck) {
                     if(newMail.googleId==='0' || newMail.subject==='' || newMail.description==='' || newMail.scheduleSelected==='') {
                         res.status(200).send({message: "Please fill in all the fields in the form to send a mail"});
                     } else {
                         sendMail(newMail).then(result=> {
                             console.log(result)
-                        }).catch(error=>console.log(error));
-                        Mail.create(newMail, (err,newMail) => {
-                            if(err) {
-                                res.status(400).send({message: "Couldn't schedule the the mail"});
-                            } else {
-                                if(newMail.scheduleSelected === "recurring") {
-                                    cronSchedule.recurring(newMail);                 
-                                } else if(newMail.scheduleSelected === "weekly") {
-                                    cronSchedule.weekly(newMail);                 
-                                } else if(newMail.scheduleSelected === "yearly") {
-                                    cronSchedule.yearly(newMail);                 
-                                } else if(newMail.scheduleSelected === "monthly") {
-                                    cronSchedule.monthly(newMail);
+                            Mail.create(newMail, (err,newMail) => {
+                                if(err) {
+                                    res.status(400).send({message: "Couldn't schedule the the mail"});
+                                } else {
+                                    if(newMail.scheduleSelected === "recurring") {
+                                        cronSchedule.recurring(newMail);                 
+                                    } else if(newMail.scheduleSelected === "weekly") {
+                                        cronSchedule.weekly(newMail);                 
+                                    } else if(newMail.scheduleSelected === "yearly") {
+                                        cronSchedule.yearly(newMail);                 
+                                    } else if(newMail.scheduleSelected === "monthly") {
+                                        cronSchedule.monthly(newMail);
+                                    }
+                                    res.status(200).send({message: "Mail sent and scheduled successfully", mail: newMail});
                                 }
-                                res.status(200).send({message: "Mail sent and scheduled successfully", mail: newMail});
-                            }
-                        })        
+                            })
+                        }).catch(error=>res.status(200).send({message: error}));        
                     }
+                } else {
+                    res.status(200).send({message: "Check the validity of the mail which you have enetered"});
                 }
             }
         });

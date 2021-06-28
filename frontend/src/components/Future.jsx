@@ -29,7 +29,7 @@ const Future = () => {
 
                 {
 
-                    (arr.length != 0) ? arr.map((item) =>
+                    (arr.length !== 0) ? arr.map((item) =>
 
                         <Futuremails key={item._id} id={item._id} body={item.body} sub={item.subject} to={item.to} />
 
