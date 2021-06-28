@@ -19,7 +19,6 @@ const Mail = ({ user }) => {
         }
         const url = "https://powerful-oasis-11367.herokuapp.com/create_mail/" + user
         axios.post(url, mail).then((res) => {
-            // console.log(res.data)
             alert(res.data.message)
         });
     }
@@ -38,10 +37,9 @@ const Mail = ({ user }) => {
                         <input type="text" name="subject" value={subject} onChange={(e) => setsubject(e.target.value)} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                     </div>
                     <div className="mb-3">
-                        <label for="exampleInputEmail1" className="form-label">Recurring</label>
-                        <input type="text" name="recur" value={scheduleSelected} onChange={(e) => setscheduleSelected(e.target.value)} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                        <select class="form-select" aria-label="Default select example" value={scheduleSelected} 
-        onChange={(e) => setscheduleSelected(e.target.value)}>
+
+                        <select class="form-select" aria-label="Default select example" value={scheduleSelected}
+                            onChange={(e) => setscheduleSelected(e.target.value)}>
                             <option selected>Choose period</option>
                             <option value="weekly">Weekly</option>
                             <option value="monthly">Monthly</option>
@@ -51,7 +49,7 @@ const Mail = ({ user }) => {
                     </div>
 
                     <div className="mb-3" >
-                        <CKEditor style={{ height: "50vh" }}
+                        <CKEditor
                             editor={ClassicEditor}
                             data="<p>Type your mail body</p>"
                             onReady={editor => {
@@ -62,6 +60,7 @@ const Mail = ({ user }) => {
                                 const data = editor.getData();
                                 setdesc(data);
                             }}
+                            Size={32}
                         />
                     </div>
                     <input type="submit" value="submit" className="btn btn-warning" />
