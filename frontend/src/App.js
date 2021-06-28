@@ -25,9 +25,9 @@ const App = () => {
     setuser(response.profileObj.googleId)
     localStorage.setItem('user', response.profileObj.googleId)
   }
+
   const load = () => {
     window.location.reload();
-
   }
 
 

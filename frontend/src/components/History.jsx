@@ -5,18 +5,16 @@ import axios from "axios"
 
 const History = () => {
     const LH = "https://powerful-oasis-11367.herokuapp.com/";
-    const [arr, updateMails] = useState([]);
+    const [arr, sentMails] = useState([]);
     useEffect(() => {
         getdata()
     }, [arr])
     const getdata = () => {
         const user = localStorage.getItem('user');
-
         if (user) {
-            const url = LH + "sent_mails/" + user;
-            axios.get(url).then((res) => {
-                updateMails(res.data.mails)
-                // console.log(res);
+            const url2 = LH + "sent_mails/" + user;
+            axios.get(url2).then((res) => {
+                sentMails(res.data.mails)
             })
         }
     }
