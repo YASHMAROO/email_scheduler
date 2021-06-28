@@ -9,8 +9,6 @@ const validator = require('validator');
 const Verifier = require("email-verifier");
 
 
-//Mailer logic using nodemailer
-
 //get all future mails
 router.get('/mails/:id', (req, res) => {
     if(req.isAuthenticated()) {
