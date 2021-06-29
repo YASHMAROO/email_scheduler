@@ -122,4 +122,26 @@ router.post('/create_mail/:id' , (req,res) => {
     }
 })
 
+//Route for deleting a mail
+router.delete('/delete_mail/:id', (req,res) => {
+    Mail.findById(req.params.id, (err, foundMail) => {
+        if(err) {
+            res.send({error: err});
+        } else {
+            if(foundMail.userId === req.body.userId) {
+                Mail.findByIdAndRemove(req.params.id, (err, reponse) => {
+                    if(err) {
+                        res.send({error: err});
+                    } else {
+                        res.status(200).send({message: "Mail deleted successfully"});
+                    }
+                })
+            } else {
+                res.status(200).send({message: "You donot have permission to delete the mail"});
+            }
+        }
+    })
+
+})
+
 module.exports = router;
