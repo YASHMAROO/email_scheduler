@@ -72,27 +72,7 @@ const App = () => {
         </div>
       </nav>
 
-      {
-        (user == 0) ?
-          <div className="m-3">
-            <GoogleLogin
-              clientId="1099252555614-t7njjdio9amae9b7d52oc8qju53nlb2h.apps.googleusercontent.com"
-              buttonText="Login"
-              onSuccess={responseGoogle}
-              onFailure={responseGoogle}
-              isSignedIn={true}
-              cookiePolicy={'single_host_origin'} />
-          </div>
-          :
-          <>
-            <button onClick={load} className="m-3 p-0"> <GoogleLogout
-              clientId="1099252555614-t7njjdio9amae9b7d52oc8qju53nlb2h.apps.googleusercontent.com"
-              buttonText="Logout"
-            /></button>
-
-
-          </>
-      }
+     
 
       <Switch>
 
