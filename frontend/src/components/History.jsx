@@ -5,6 +5,7 @@ import ReactLoading from 'react-loading';
 
 const History = () => {
     const LH = "https://powerful-oasis-11367.herokuapp.com/";
+
     const [arr, sentMails] = useState([]);
     const [load, setload] = useState(false)
     const noitem = 0;
@@ -21,6 +22,7 @@ const History = () => {
         if (user) {
             const url2 = LH + "sent_mails/" + user;
             axios.get(url2).then((res) => {
+                console.log(res.data.mails)
                 sentMails(res.data.mails)
             })
         }
@@ -34,7 +36,7 @@ const History = () => {
 
                     (load) ? arr.map((item) =>
 
-                        <SingleMail key={item._id} id={item._id} body={item.body} sub={item.subject} to={item.to} />
+                        <SingleMail key={item._id} id={item._id} body={item.body} sub={item.subject} to={item.to} date={item.date} />
 
                     ) : <div className="col-md-6 col-lg-12 pb-4 top-50" ><div className="item align-items-center top-50 " style={{ marginLeft: "45%" }}><ReactLoading type={'spinningBubbles'} color="#FFC107" height={'20%'} width={'20%'} /></div></div>
 

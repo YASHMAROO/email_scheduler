@@ -10,9 +10,9 @@ import { useState, useEffect } from "react"
 import Future from "./components/Future"
 import History from './components/History';
 import { GoogleLogin, GoogleLogout } from "react-google-login"
-import axios from "axios"
 import { GrMail } from "react-icons/gr"
 import PrivateRoute from './components/PrivateRoute'
+import Error from "./components/Error"
 
 
 const App = () => {
@@ -116,6 +116,10 @@ const App = () => {
 
           <Team />
 
+        </Route>
+
+        <Route path="*">
+          <Error />
         </Route>
 
       </Switch>

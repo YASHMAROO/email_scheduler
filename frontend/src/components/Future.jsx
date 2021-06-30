@@ -25,7 +25,7 @@ const Future = () => {
         if (user) {
             const url = LH + "mails/" + user;
             axios.get(url).then((res) => {
-
+                console.log(res.data.mails)
                 updateMails(res.data.mails)
             })
         }
