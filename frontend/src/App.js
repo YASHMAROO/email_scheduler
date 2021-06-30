@@ -49,7 +49,7 @@ const App = () => {
               </li>
               {
                 (user !== 0) ?
-                  <NavLink to="/mail" className="nav-link active  " aria-current="page">Send Mails</NavLink> : <h1></h1>
+                  <NavLink to="/mail" className="nav-link active  " aria-current="page">Send Mails</NavLink> : <h1> </h1>
 
               }
               <li className="nav-item">
