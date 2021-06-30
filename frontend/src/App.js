@@ -6,10 +6,11 @@ import Team from './components/Team';
 import Footer from './components/Footer';
 import { Route, Switch, NavLink } from "react-router-dom"
 import Mail from './components/Mail';
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Future from "./components/Future"
 import History from './components/History';
 import { GoogleLogin, GoogleLogout } from "react-google-login"
+import axios from "axios"
 import { GrMail } from "react-icons/gr"
 import PrivateRoute from './components/PrivateRoute'
 
@@ -20,6 +21,7 @@ const App = () => {
 
 
   const responseGoogle = (response) => {
+    console.log(response)
     setuser(response.profileObj.googleId)
     localStorage.setItem('user', response.profileObj.googleId)
   }
@@ -27,6 +29,9 @@ const App = () => {
   const load = () => {
     window.location.reload();
   }
+
+
+
 
   return (
     <>

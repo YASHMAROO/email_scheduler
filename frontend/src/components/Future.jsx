@@ -49,7 +49,6 @@ const Future = () => {
                 }
                 {
                     (arr.length !== 0 || !load) ? <h1> </h1> : <Futuremails body={noitem}></Futuremails>
-
                 }
             </div>
 

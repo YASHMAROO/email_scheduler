@@ -43,7 +43,6 @@ const History = () => {
                 }
                 {
                     (arr.length !==0 || !load) ? <h1> </h1> : <SingleMail body={noitem}></SingleMail>
-
                 }
             </div>
         </>

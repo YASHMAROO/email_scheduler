@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactHtmlParser from 'react-html-parser';
 import Slide from 'react-reveal/Slide';
 
@@ -19,10 +19,7 @@ const Futuremails = ({ body, sub, to, key }) => {
                     </div>
                 </Slide> : <h1>No mails Scheduled</h1>
             }
-
-
         </>
-
     )
 }
 
