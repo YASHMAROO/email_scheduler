@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import axios from "axios"
 import { CKEditor } from '@ckeditor/ckeditor5-react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import './delete.css'
 
 const Mail = () => {
     // const SiteURL = "https://powerful-oasis-11367.herokuapp.com/";
@@ -22,7 +25,18 @@ const Mail = () => {
         const user = localStorage.getItem('user');
         const url = LH + "create_mail/" + user;
         axios.post(url, mail).then((res) => {
-            alert(res.data.message)
+            toast(res.data.message, {
+                className:"custom-style",
+                progressClassName:"custom-progress",
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                
+            });
         });
     }
     return (
