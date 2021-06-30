@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ReactHtmlParser from 'react-html-parser';
 import Slide from 'react-reveal/Slide';
 
@@ -7,7 +7,7 @@ const Futuremails = ({ body, sub, to, key }) => {
     return (
         <>
             {
-                (body != 0) ? <Slide to bottom>
+                (body !== 0) ? <Slide to bottom>
                     <div className="col-md-6 col-lg-12 pb-4 ">
                         <div className="card text-dark bg-warning m-3 shadow">
                             <div className="card-header text-start">{to}</div>

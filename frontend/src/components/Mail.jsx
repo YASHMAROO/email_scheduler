@@ -4,7 +4,7 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 const Mail = () => {
-    const SiteURL = "https://powerful-oasis-11367.herokuapp.com/";
+    // const SiteURL = "https://powerful-oasis-11367.herokuapp.com/";
     const LH = "https://powerful-oasis-11367.herokuapp.com/";
     const [to, setto] = useState("");
     const [subject, setsubject] = useState("");

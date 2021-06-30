@@ -6,11 +6,10 @@ import Team from './components/Team';
 import Footer from './components/Footer';
 import { Route, Switch, NavLink } from "react-router-dom"
 import Mail from './components/Mail';
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Future from "./components/Future"
 import History from './components/History';
 import { GoogleLogin, GoogleLogout } from "react-google-login"
-import axios from "axios"
 import { GrMail } from "react-icons/gr"
 import PrivateRoute from './components/PrivateRoute'
 
@@ -21,7 +20,6 @@ const App = () => {
 
 
   const responseGoogle = (response) => {
-    console.log(response)
     setuser(response.profileObj.googleId)
     localStorage.setItem('user', response.profileObj.googleId)
   }
@@ -29,9 +27,6 @@ const App = () => {
   const load = () => {
     window.location.reload();
   }
-
-
-
 
   return (
     <>
@@ -73,7 +68,7 @@ const App = () => {
       </nav>
 
       {
-        (user == 0) ?
+        (user === 0) ?
           <div className="m-3">
             <GoogleLogin
               clientId="1099252555614-t7njjdio9amae9b7d52oc8qju53nlb2h.apps.googleusercontent.com"
@@ -124,7 +119,7 @@ const App = () => {
   );
 }
 export const isLogin = () => {
-  if (localStorage.getItem('user') != 0) {
+  if (localStorage.getItem('user') !== 0) {
     return true;
   }
   return false;
