@@ -66,7 +66,7 @@ const Mail = () => {
                             Size={32}
                         />
                     </div>
-                    <input type="submit" value="submit" className="btn btn-warning" />
+                    <input type="submit" value="Submit" className="btn btn-warning" />
                 </section>
             </form>
 
