@@ -1,23 +1,28 @@
+import React, { useState } from 'react'
 import ReactHtmlParser from 'react-html-parser';
 import Slide from 'react-reveal/Slide';
-const SingleMail = ({ body, sub, to, key, date }) => {
+
+const SingleMail = ({ body, sub, to, key }) => {
+
     return (
         <>
-            <Slide to bottom>
-                <div className="col-md-6 col-lg-12 pb-4 ">
-                    <div className="card text-dark bg-warning m-3 shadow">
-                        <div className="card-header text-start">{to}</div>
-                        <div className="card-body text-start">
-                            <h5 className="card-title">{sub}</h5>
-                            <p className="card-text">{ReactHtmlParser(body)}</p>
-                            <p className="text-dark" style={{ fontSize: "10px" }}>{date}</p>
+            {
+                (body != 0) ? <Slide to bottom>
+                    <div className="col-md-6 col-lg-12 pb-4 ">
+                        <div className="card text-dark bg-warning m-3 shadow">
+                            <div className="card-header text-start">{to}</div>
+                            <div className="card-body text-start">
+                                <h5 className="card-title ">{sub}</h5>
+                                <p className="card-text">{ReactHtmlParser(body)}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </Slide>
+                </Slide> : <h1>No mails Sent</h1>
+            }
 
 
         </>
+
     )
 }
 
