@@ -23,5 +23,8 @@ You will also see any lint errors in the console.
 ### Run `npm install`
 To install all the dependencies
 
+### Create `.env` in the server folder same as `.env.example`
+Fill in the parameters of .env file
+
 ### Run `node server`
 To run the server at port 5000

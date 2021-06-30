@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import axios from "axios"
 import { CKEditor } from '@ckeditor/ckeditor5-react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import './delete.css'
 
 const Mail = () => {
-    const SiteURL = "https://powerful-oasis-11367.herokuapp.com/";
-    const LH = "http://localhost:5000/";
+    // const SiteURL = "https://powerful-oasis-11367.herokuapp.com/";
+    const LH = "https://powerful-oasis-11367.herokuapp.com/";
     const [to, setto] = useState("");
     const [subject, setsubject] = useState("");
     const [desc, setdesc] = useState("");
@@ -20,9 +23,20 @@ const Mail = () => {
             scheduleSelected: scheduleSelected
         }
         const user = localStorage.getItem('user');
-        const url = LH+"create_mail/" + user;
+        const url = LH + "create_mail/" + user;
         axios.post(url, mail).then((res) => {
-            alert(res.data.message)
+            toast(res.data.message, {
+                className:"custom-style",
+                progressClassName:"custom-progress",
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                
+            });
         });
     }
     return (
@@ -41,8 +55,8 @@ const Mail = () => {
                     </div>
                     <div className="mb-3">
                         <label for="exampleInputEmail1" className="form-label">Recurring</label>
-                        <select class="form-select" aria-label="Default select example" value={scheduleSelected} 
-        onChange={(e) => setscheduleSelected(e.target.value)}>
+                        <select class="form-select" aria-label="Default select example" value={scheduleSelected}
+                            onChange={(e) => setscheduleSelected(e.target.value)}>
                             <option selected>Choose period</option>
                             <option value="weekly">Weekly</option>
                             <option value="monthly">Monthly</option>
@@ -52,7 +66,7 @@ const Mail = () => {
                     </div>
 
                     <div className="mb-3" >
-                        <CKEditor style={{ height: "50vh" }}
+                        <CKEditor
                             editor={ClassicEditor}
                             data="<p>Type your mail body</p>"
                             onReady={editor => {
@@ -63,6 +77,7 @@ const Mail = () => {
                                 const data = editor.getData();
                                 setdesc(data);
                             }}
+                            Size={32}
                         />
                     </div>
                     <input type="submit" value="submit" className="btn btn-warning" />

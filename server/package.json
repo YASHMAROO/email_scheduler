@@ -16,12 +16,15 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
+    "email-verifier": "^0.4.1",
     "express": "^4.17.1",
     "googleapis": "^78.0.0",
     "mongoose": "^5.12.14",
+    "node": "^16.3.0",
     "node-cron": "^3.0.0",
     "nodemailer": "^6.6.2",
     "passport": "^0.4.1",
-    "passport-google-oauth20": "^2.0.0"
+    "passport-google-oauth20": "^2.0.0",
+    "validator": "^13.6.0"
   }
 }

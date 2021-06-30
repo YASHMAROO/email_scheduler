@@ -16,10 +16,14 @@
     "react-google-login": "^5.2.2",
     "react-html-parser": "^2.0.2",
     "react-icons": "^4.2.0",
+    "react-loading": "^2.0.3",
     "react-preloader-icon": "^1.0.0",
+    "react-reveal": "^1.2.2",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-simple-snackbar": "^1.1.11",
+    "react-toastify": "^7.0.4",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

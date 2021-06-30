@@ -1,6 +1,6 @@
 import React from "react"
 import { Route, Redirect } from "react-router-dom"
-import {isLogin} from '../App'
+import { isLogin } from '../App'
 
 export default function PrivateRoute({ component: Component, ...rest }) {
     return (
