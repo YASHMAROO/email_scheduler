@@ -73,7 +73,7 @@ const App = () => {
       </nav>
 
       {
-        (user == 0) ?
+        (user === 0) ?
           <div className="m-3">
             <GoogleLogin
               clientId="1099252555614-t7njjdio9amae9b7d52oc8qju53nlb2h.apps.googleusercontent.com"
@@ -124,7 +124,7 @@ const App = () => {
   );
 }
 export const isLogin = () => {
-  if (localStorage.getItem('user') != 0) {
+  if (localStorage.getItem('user') !== 0) {
     return true;
   }
   return false;

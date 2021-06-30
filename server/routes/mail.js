@@ -88,7 +88,7 @@ router.post('/create_mail/:id' , (req,res) => {
             if (err) {
                 res.send({message: err})
             } else {
-                if(data.catchAllCheck && data.disposableCheck && data.smtpCheck) {
+                if(data.catchAllCheck!=='null' && data.disposableCheck!=='null' && data.smtpCheck!=='false') {
                     if(newMail.googleId==='0' || newMail.subject==='' || newMail.description==='' || newMail.scheduleSelected==='') {
                         res.status(200).send({message: "Please fill in all the fields in the form to send a mail"});
                     } else {

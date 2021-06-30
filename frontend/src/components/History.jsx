@@ -18,7 +18,7 @@ const History = () => {
     }, [])
     const getdata = () => {
         const user = localStorage.getItem('user');
-        if (user) {
+        if (user!=="0") {
             const url2 = LH + "sent_mails/" + user;
             axios.get(url2).then((res) => {
                 sentMails(res.data.mails)
@@ -42,8 +42,7 @@ const History = () => {
 
                 }
                 {
-                    (arr.length != 0 || !load) ? <h1></h1> : <SingleMail body={noitem}></SingleMail>
-
+                    (arr.length !==0 || !load) ? <h1> </h1> : <SingleMail body={noitem}></SingleMail>
                 }
             </div>
         </>

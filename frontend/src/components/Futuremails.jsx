@@ -7,7 +7,7 @@ const Futuremails = ({ body, sub, to, key }) => {
     return (
         <>
             {
-                (body != 0) ? <Slide to bottom>
+                (body !== 0) ? <Slide to bottom>
                     <div className="col-md-6 col-lg-12 pb-4 ">
                         <div className="card text-dark bg-warning m-3 shadow">
                             <div className="card-header text-start">{to}</div>
@@ -19,10 +19,7 @@ const Futuremails = ({ body, sub, to, key }) => {
                     </div>
                 </Slide> : <h1>No mails Scheduled</h1>
             }
-
-
         </>
-
     )
 }
 
