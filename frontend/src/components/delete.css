@@ -1,0 +1,7 @@
+.custom-style{
+    background: linear-gradient(to bottom left, #ffd129 3%, #ffffff 100%);
+                    color: black;
+}
+.custom-progress{
+    background:black!important;
+}

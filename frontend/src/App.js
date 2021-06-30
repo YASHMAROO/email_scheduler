@@ -13,7 +13,8 @@ import { GoogleLogin, GoogleLogout } from "react-google-login"
 import axios from "axios"
 import { GrMail } from "react-icons/gr"
 import PrivateRoute from './components/PrivateRoute'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   const [user, setuser] = useState(0)
@@ -23,11 +24,37 @@ const App = () => {
   const responseGoogle = (response) => {
     console.log(response)
     setuser(response.profileObj.googleId)
+    if (response.profileObj.googleId) {
+      toast("Logged In Successfully", {
+        className:"custom-style",
+        progressClassName:'custom-progress',
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        
+      });
+    }
     localStorage.setItem('user', response.profileObj.googleId)
   }
 
   const load = () => {
-    window.location.reload();
+
+    toast.warn("Logged Out Successfully", {
+      position: "top-center",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+
+    });
+    setTimeout(()=>{window.location.reload()}, 1000);    
+
   }
 
 
@@ -55,13 +82,16 @@ const App = () => {
               <li className="nav-item">
                 <NavLink to="/team" className="nav-link active  " aria-current="page">Team</NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink to="/history" className="nav-link active  " aria-current="page">History</NavLink>
-              </li>
+              {(user != 0) ?
+                <>
+                  <li className="nav-item">
+                    <NavLink to="/history" className="nav-link active  " aria-current="page">History</NavLink>
+                  </li>
 
-              <li className="nav-item">
-                <NavLink to="/futuremails" className="nav-link active  " aria-current="page">Scheduled Mails</NavLink>
-              </li>
+                  <li className="nav-item">
+                    <NavLink to="/futuremails" className="nav-link active  " aria-current="page">Scheduled Mails</NavLink>
+                  </li></> : null
+              }
 
 
 
@@ -124,7 +154,7 @@ const App = () => {
   );
 }
 export const isLogin = () => {
-  if (localStorage.getItem('user') !== 0) {
+  if (localStorage.getItem('user') != 0) {
     return true;
   }
   return false;
