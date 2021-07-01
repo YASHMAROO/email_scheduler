@@ -2,11 +2,13 @@ import React from 'react'
 import { FaGithubAlt, FaLinkedin } from "react-icons/fa"
 import Bounce from 'react-reveal/Bounce';
 import Slide from 'react-reveal/Slide';
-
+import '../App.css'
 const Team = () => {
     return (
         <>
-            <section className="team mt-3">
+
+
+            <section className="team mt-auto">
                 <div className="Services py-5 ">
                     <div className="container-lg py-4">
                         <div className="row justify-content-center">
@@ -23,9 +25,9 @@ const Team = () => {
                         <Slide to left>
                             <div className="col-md-6 col-lg-3 pb-4">
 
-                                <div className="card shadow">
+                                <div className="card shadow rounded-top" style={{ borderTopRightRadius: "25%" }}>
 
-                                    <img className="card-img-top " src="/images/yash.jpg" alt="Cardcap" />
+                                    <img className="card-img-top  rounded-circle" src="/images/yash.jpg" alt="Cardcap" />
                                     <div className="card-body">
                                         <h5 className="card-title">Yash Maroo</h5>
                                         <p className="card-text">ECE, NIT Durgapur</p>
@@ -38,7 +40,7 @@ const Team = () => {
                         <Slide to top>
                             <div className="col-md-6 col-lg-3 pb-4">
                                 <div className="card shadow"  >
-                                    <img className="card-img-top " src="/images/pancho.jpg" alt="Card cap" />
+                                    <img className="card-img-top rounded-circle" src="/images/pancho.jpg" alt="Card cap" />
                                     <div className="card-body">
                                         <h5 className="card-title">Vedang Pancholi</h5>
                                         <p className="card-text">CSE, NIT Durgapur</p>
@@ -51,7 +53,7 @@ const Team = () => {
                         <Slide to bottom>
                             <div className="col-md-6 col-lg-3 pb-4">
                                 <div className="card shadow" >
-                                    <img className="card-img-top " src="/images/arin17.jpg" alt="Cardcap" />
+                                    <img className="card-img-top rounded-circle" src="/images/arin17.jpg" alt="Cardcap" />
                                     <div className="card-body">
                                         <h5 className="card-title">Bishwajit Ghosh</h5>
                                         <p className="card-text">ECE, NIT Durgapur</p>
@@ -64,7 +66,7 @@ const Team = () => {
                         <Slide to right>
                             <div className="col-md-6 col-lg-3 pb-4">
                                 <div className="card shadow">
-                                    <img className="card-img-top " src="/images/subham.jpg" alt="Cardcap" />
+                                    <img className="card-img-top rounded-circle " src="/images/subham.jpg" alt="Cardcap" />
                                     <div className="card-body">
                                         <h5 className="card-title">Subham Gupta</h5>
                                         <p className="card-text">EEE, NIT Durgapur</p>

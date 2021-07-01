@@ -1,3 +1,4 @@
+import React, { Component } from 'react';
 import './App.css';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import Home from './components/Home';
@@ -10,11 +11,12 @@ import { useState, useEffect } from "react"
 import Future from "./components/Future"
 import History from './components/History';
 import { GoogleLogin, GoogleLogout } from "react-google-login"
-import axios from "axios"
 import { GrMail } from "react-icons/gr"
 import PrivateRoute from './components/PrivateRoute'
+import Error from "./components/Error"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './components/delete.css'
 
 const App = () => {
   const [user, setuser] = useState(0)
@@ -26,8 +28,8 @@ const App = () => {
     setuser(response.profileObj.googleId)
     if (response.profileObj.googleId) {
       toast("Logged In Successfully", {
-        className:"custom-style",
-        progressClassName:'custom-progress',
+        className: "custom-style",
+        progressClassName: 'custom-progress',
         position: "top-center",
         autoClose: 2000,
         hideProgressBar: false,
@@ -35,7 +37,7 @@ const App = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        
+
       });
     }
     localStorage.setItem('user', response.profileObj.googleId)
@@ -53,11 +55,9 @@ const App = () => {
       progress: undefined,
 
     });
-    setTimeout(()=>{window.location.reload()}, 1000);    
+    setTimeout(() => { window.location.reload() }, 1000);
 
   }
-
-
 
 
   return (
@@ -146,6 +146,10 @@ const App = () => {
 
           <Team />
 
+        </Route>
+
+        <Route path="*">
+          <Error />
         </Route>
 
       </Switch>
