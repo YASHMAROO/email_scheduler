@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ReactHtmlParser from 'react-html-parser';
 import Slide from 'react-reveal/Slide';
 

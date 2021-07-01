@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Futuremails from './Futuremails'
 import { useState, useEffect } from "react"
 import axios from "axios"

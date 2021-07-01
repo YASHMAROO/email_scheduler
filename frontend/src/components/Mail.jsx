@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from "axios"
 import { CKEditor } from '@ckeditor/ckeditor5-react';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import './delete.css'

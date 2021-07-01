@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import Home from './components/Home';
@@ -7,14 +7,14 @@ import Team from './components/Team';
 import Footer from './components/Footer';
 import { Route, Switch, NavLink } from "react-router-dom"
 import Mail from './components/Mail';
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Future from "./components/Future"
 import History from './components/History';
 import { GoogleLogin, GoogleLogout } from "react-google-login"
 import { GrMail } from "react-icons/gr"
 import PrivateRoute from './components/PrivateRoute'
 import Error from "./components/Error"
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './components/delete.css'
 
@@ -24,7 +24,6 @@ const App = () => {
 
 
   const responseGoogle = (response) => {
-    console.log(response)
     setuser(response.profileObj.googleId)
     if (response.profileObj.googleId) {
       toast("Logged In Successfully", {

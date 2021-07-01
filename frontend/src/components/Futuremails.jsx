@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ReactHtmlParser from 'react-html-parser';
 import Slide from 'react-reveal/Slide';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios'
 import { AiTwotoneDelete } from 'react-icons/ai'
