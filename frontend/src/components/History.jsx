@@ -1,3 +1,4 @@
+import React, { Component } from 'react';
 import SingleMail from './SingleMail'
 import { useState, useEffect } from 'react'
 import axios from "axios"
@@ -19,7 +20,7 @@ const History = () => {
     }, [])
     const getdata = () => {
         const user = localStorage.getItem('user');
-        if (user) {
+        if (user !== "0") {
             const url2 = LH + "sent_mails/" + user;
             axios.get(url2).then((res) => {
                 console.log(res.data.mails)
@@ -44,8 +45,7 @@ const History = () => {
 
                 }
                 {
-                    (arr.length != 0 || !load) ? <h1></h1> : <SingleMail body={noitem}></SingleMail>
-
+                    (arr.length !== 0 || !load) ? <h1> </h1> : <SingleMail body={noitem}></SingleMail>
                 }
             </div>
         </>

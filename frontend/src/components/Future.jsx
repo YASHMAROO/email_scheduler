@@ -1,3 +1,4 @@
+import React, { Component } from 'react';
 import Futuremails from './Futuremails'
 import { useState, useEffect } from "react"
 import axios from "axios"
@@ -22,7 +23,7 @@ const Future = () => {
 
     const getdata = () => {
         const user = localStorage.getItem('user');
-        if (user) {
+        if (user !== "0") {
             const url = LH + "mails/" + user;
             axios.get(url).then((res) => {
                 console.log(res.data.mails)
@@ -48,8 +49,7 @@ const Future = () => {
 
                 }
                 {
-                    (arr.length != 0 || !load) ? <h1></h1> : <Futuremails body={noitem}></Futuremails>
-
+                    (arr.length !== 0 || !load) ? <h1> </h1> : <Futuremails body={noitem}></Futuremails>
                 }
             </div>
 

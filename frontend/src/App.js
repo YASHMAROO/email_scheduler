@@ -1,3 +1,4 @@
+import React, { Component } from 'react';
 import './App.css';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import Home from './components/Home';
@@ -13,7 +14,9 @@ import { GoogleLogin, GoogleLogout } from "react-google-login"
 import { GrMail } from "react-icons/gr"
 import PrivateRoute from './components/PrivateRoute'
 import Error from "./components/Error"
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './components/delete.css'
 
 const App = () => {
   const [user, setuser] = useState(0)
@@ -23,14 +26,38 @@ const App = () => {
   const responseGoogle = (response) => {
     console.log(response)
     setuser(response.profileObj.googleId)
+    if (response.profileObj.googleId) {
+      toast("Logged In Successfully", {
+        className: "custom-style",
+        progressClassName: 'custom-progress',
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+
+      });
+    }
     localStorage.setItem('user', response.profileObj.googleId)
   }
 
   const load = () => {
-    window.location.reload();
+
+    toast.warn("Logged Out Successfully", {
+      position: "top-center",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+
+    });
+    setTimeout(() => { window.location.reload() }, 1000);
+
   }
-
-
 
 
   return (
@@ -55,13 +82,16 @@ const App = () => {
               <li className="nav-item">
                 <NavLink to="/team" className="nav-link active  " aria-current="page">Team</NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink to="/history" className="nav-link active  " aria-current="page">History</NavLink>
-              </li>
+              {(user != 0) ?
+                <>
+                  <li className="nav-item">
+                    <NavLink to="/history" className="nav-link active  " aria-current="page">History</NavLink>
+                  </li>
 
-              <li className="nav-item">
-                <NavLink to="/futuremails" className="nav-link active  " aria-current="page">Scheduled Mails</NavLink>
-              </li>
+                  <li className="nav-item">
+                    <NavLink to="/futuremails" className="nav-link active  " aria-current="page">Scheduled Mails</NavLink>
+                  </li></> : null
+              }
 
 
 
@@ -73,7 +103,7 @@ const App = () => {
       </nav>
 
       {
-        (user == 0) ?
+        (user === 0) ?
           <div className="m-3">
             <GoogleLogin
               clientId="1099252555614-t7njjdio9amae9b7d52oc8qju53nlb2h.apps.googleusercontent.com"

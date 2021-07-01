@@ -5,7 +5,7 @@ import LightSpeed from 'react-reveal/LightSpeed';
 
 const About = () => {
     return (
-        <section className="about py-3 px-5 mt-3" style={{ marginTop: "-0rem" }} >
+        <section className="about py-3 px-5 mt-5 mb-5" style={{ marginTop: "-0rem" }} >
             <div className="row  align-content-center " style={{ height: "70vh" }}>
                 <div className="heading text-center py-4 px-2 ">
                     <Bounce>
@@ -17,10 +17,10 @@ const About = () => {
 
                     <div className="main px-3" >
                         <LightSpeed>
-                            <h4 className="fst-italic"> It is an Email scheduling and sending application based on MERN stack.
+                            <h5 className="fst-italic"> It is an Email scheduling and sending application based on MERN stack.
                                 with user login logout feature and sending and scheduling mails weekly,monthly and yearly.
                                 It also has the feature to view history and Scheduled messages.
-                            </h4>
+                            </h5>
                             <p className="text-muted">This application is made using the following:</p>
                         </LightSpeed>
                     </div>

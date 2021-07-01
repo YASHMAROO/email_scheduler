@@ -1,9 +1,7 @@
-import { React } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import Zoom from 'react-reveal/Zoom';
-
-
-
+import { AiOutlineSend } from "react-icons/ai"
 
 const Home = ({ user }) => {
 
@@ -11,7 +9,7 @@ const Home = ({ user }) => {
 
     return (
         <>
-            <section className="Home mt-3">
+            <section className="Home mt-0">
                 <div className="container-fluid">
                     <div className="row bg-transparent  vh-100 align-content-center align-items-center">
                         <div className="col-md-6 ">
@@ -25,7 +23,7 @@ const Home = ({ user }) => {
                                 </div>
 
                                 {
-                                    user ? <Link to="/mail" className="btn btn-warning m-5 p-3" style={{ width: "110px" }}>Send Mail</Link> : null
+                                    user ? <Link to="/mail" className="btn btn-warning m-5 p-3 fw-bold" style={{ width: "150px" }}><AiOutlineSend color="black" /> Send Mail</Link> : null
 
                                 }
 

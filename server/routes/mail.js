@@ -76,6 +76,7 @@ router.post('/create_mail/:id', (req, res) => {
             return error;
         }
     };
+<<<<<<< HEAD
     if (validator.isEmail(newMail.to)) {
         let verifier = new Verifier(process.env.EMAIL_VERIFIER_API_KEY, {
             checkCatchAll: false,
@@ -84,10 +85,15 @@ router.post('/create_mail/:id', (req, res) => {
             validateDNS: false,
             validateSMTP: false
         });
+=======
+    if(validator.isEmail(newMail.to)) {
+        let verifier = new Verifier(process.env.EMAIL_VERIFIER_API_KEY);
+>>>>>>> 72033821c5bad64568bb8013541e1945ad90bd93
         verifier.verify(newMail.to, (err, data) => {
             if (err) {
                 res.send({ message: err })
             } else {
+<<<<<<< HEAD
                 if (data.catchAllCheck && data.disposableCheck && data.smtpCheck) {
                     if (newMail.googleId === '0' || newMail.subject === '' || newMail.description === '' || newMail.scheduleSelected === '') {
                         res.status(200).send({ message: "Please fill in all the fields in the form to send a mail" });
@@ -114,6 +120,30 @@ router.post('/create_mail/:id', (req, res) => {
                     }
                 } else {
                     res.status(200).send({ message: "Check the validity of the mail which you have enetered" });
+=======
+                if(newMail.googleId==='0' || newMail.subject==='' || newMail.description==='' || newMail.scheduleSelected==='') {
+                    res.status(200).send({message: "Please fill in all the fields in the form to send a mail"});
+                } else {
+                    sendMail(newMail).then(result=> {
+                        console.log(result)
+                        Mail.create(newMail, (err,newMail) => {
+                            if(err) {
+                                res.status(400).send({message: "Couldn't schedule the the mail"});
+                            } else {
+                                if(newMail.scheduleSelected === "recurring") {
+                                    cronSchedule.recurring(newMail);                 
+                                } else if(newMail.scheduleSelected === "weekly") {
+                                    cronSchedule.weekly(newMail);                 
+                                } else if(newMail.scheduleSelected === "yearly") {
+                                    cronSchedule.yearly(newMail);                 
+                                } else if(newMail.scheduleSelected === "monthly") {
+                                    cronSchedule.monthly(newMail);
+                                }
+                                res.status(200).send({message: "Mail sent and scheduled successfully", mail: newMail});
+                            }
+                        })
+                    }).catch(error=>res.status(200).send({message: error}));        
+>>>>>>> 72033821c5bad64568bb8013541e1945ad90bd93
                 }
             }
         });
