@@ -5,14 +5,33 @@ const userRoute = require('./routes/user');
 const mailRoute = require('./routes/mail');
 const passport = require('passport');
 const bodyParser = require('body-parser');
-let session = require('cookie-session');
+const RateLimit = require('express-rate-limit');
+const MongoStore = require('rate-limit-mongo')
 const cors = require('cors');
+let session = require('cookie-session');
+
+let limiter = new RateLimit({
+    store: new MongoStore({
+      uri: process.env.MONGO_URI,
+      user: process.env.MONGO_USERNAME,
+      password: process.env.MONGO_PASSWORD,
+      // should match windowMs
+      expireTimeMs: 15 * 60 * 1000,
+      errorHandler: console.error.bind(null, 'rate-limit-mongo')
+      // see Configuration section for more options and details
+    }),
+    max: 100,
+    // should match expireTimeMs
+    windowMs: 15 * 60 * 1000
+});
 
 require('dotenv').config();
 mongoose.connect(process.env.MONGO_URI, {useUnifiedTopology: true, useNewUrlParser: true} ,() => {
     console.log('Mongodb is connected')
 });
 require('./config/passport')(passport);
+//Apply to all requests
+app.use(limiter);
 app.use(session({
     maxAge: 30*24*60*60*1000,
     keys: [process.env.COOKIE_KEY]

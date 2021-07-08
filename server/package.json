@@ -18,6 +18,7 @@
     "ejs": "^3.1.6",
     "email-verifier": "^0.4.1",
     "express": "^4.17.1",
+    "express-rate-limit": "^5.3.0",
     "googleapis": "^78.0.0",
     "mongoose": "^5.12.14",
     "node": "^16.3.0",
@@ -25,6 +26,7 @@
     "nodemailer": "^6.6.2",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
+    "rate-limit-mongo": "^2.3.1",
     "validator": "^13.6.0"
   }
 }
