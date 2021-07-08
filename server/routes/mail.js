@@ -7,6 +7,11 @@ const nodemailer = require('nodemailer');
 const {google} = require('googleapis');
 const validator = require('validator');
 const Verifier = require("email-verifier");
+const createDOMPurify = require('dompurify');
+const { JSDOM } = require('jsdom');
+
+const window = new JSDOM('').window;
+const DOMPurify = createDOMPurify(window);
 
 //get all future mails
 router.get('/mails/:id', (req, res) => {
@@ -33,12 +38,13 @@ router.get('/sent_mails/:id', (req, res) => {
 //post route for storing mail
 router.post('/create_mail/:id' , (req,res) => {
     let newMail = new Mail();
+    let sanitizedMailBody = DOMPurify.sanitize(req.body.description);
     newMail = {
         userId: req.params.id,
         to: req.body.to,
         subject: req.body.subject,
         scheduleSelected: req.body.scheduleSelected,
-        body: req.body.description
+        body: sanitizedMailBody
     };
     const oauth2Client = new google.auth.OAuth2(
         process.env.GOOGLE_CLIENT_ID,
@@ -67,7 +73,7 @@ router.post('/create_mail/:id' , (req,res) => {
                 from: process.env.SENDER_EMAIL_ADDRESS,
                 to: mail.to,
                 subject: mail.subject,
-                html: mail.body,
+                html: DOMPurify.sanitize(mail.body),
             };
     
             const result = await transport.sendMail(mailoptions);
